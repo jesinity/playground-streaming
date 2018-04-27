@@ -3,7 +3,7 @@ package it.jesinity.streaming.data
 import spray.json.DefaultJsonProtocol
 
 /**
-  * created by CGnal s.p.a
+  * spray json protocol
   */
 object ClearanceProtocol extends DefaultJsonProtocol {
 

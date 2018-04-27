@@ -1,7 +1,7 @@
 package it.jesinity.streaming
 
 /**
-  * created by CGnal s.p.a
+  * keys
   */
 package object conf {
 

@@ -14,7 +14,10 @@ import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 import scala.util.control.NonFatal
 
 /**
-  * created by CGnal s.p.a
+  * wrapping the act to produce into kafka in some common trait.
+  * @tparam K
+  * @tparam V
+  * @tparam R
   */
 trait KafkaProducerMain[K, V, R] {
 

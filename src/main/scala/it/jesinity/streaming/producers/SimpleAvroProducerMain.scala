@@ -22,6 +22,10 @@ import com.twitter.bijection.Injection
 import scala.collection.JavaConverters._
 import scala.collection.mutable
 
+
+/**
+  * produces into Avro
+  */
 object SimpleAvroProducerMain extends KafkaProducerMain[String, Array[Byte], Unit] with StrictLogging {
 
   val USER_SCHEMA: String = transactionSchema

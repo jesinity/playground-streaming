@@ -20,6 +20,10 @@ import org.apache.spark.rdd.RDD
 import scala.util.Try
 
 
+/**
+  * An example on how spark consumes avro record.
+  *
+  */
 object SparkAvroConsumer {
   def main(args: Array[String]): Unit = {
 

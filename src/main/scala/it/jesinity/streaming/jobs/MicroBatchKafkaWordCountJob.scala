@@ -30,7 +30,6 @@ object MicroBatchKafkaWordCountJob {
     import it.jesinity.streaming.conf._
     import it.jesinity.streaming.conf.ConfigHolder.configuration
 
-    val boostrapServer = configuration.getString(`bootstrap.servers`)
     val topic          = configuration.getString(`topic.wordcount`)
 
     val conf = new SparkConf().setAppName("micro-batch-kafka-wordcount").setMaster("local[*]")
@@ -38,13 +37,6 @@ object MicroBatchKafkaWordCountJob {
     val spark: SparkSession = SparkSession.builder
       .config(conf)
       .getOrCreate()
-
-    val utilitiesPath          = "file:///Users/dgesino/Downloads/Archive"
-    val canaleIndexer          = StringIndexerModel.load(utilitiesPath + "/canaleIndexer")
-    val flussoIndexer          = StringIndexerModel.load(utilitiesPath + "/flussoIndexer")
-    val vectorFeatureAssembler = VectorAssembler.load(utilitiesPath + "/vectorFeatureAssembler")
-    val vectorIndexer          = VectorIndexerModel.load(utilitiesPath + "/vectorFeatureIndexer")
-    val randomForestModel      = RandomForestClassificationModel.load(utilitiesPath + "/RandomForest")
 
     val streamingContext = new StreamingContext(spark.sparkContext, Seconds(10))
     streamingContext.checkpoint(s"/tmp/uarauara${System.currentTimeMillis()}")
@@ -80,23 +72,7 @@ object MicroBatchKafkaWordCountJob {
       val clearances: RDD[Clearance] = rdd.flatMap(_._2.transactions)
       clearances.toDF().show(100)
 
-    /*
-
-      val feat = tmp.computeFeatures(clearances)
-      val preProcess1 = canaleIndexer.transform(feat)
-      val preProcess2 =
-      val preProcess3 =
-      val preProcess4 =
-
-      val out = myModel.transform(preProcess4)
-
-      out.show()
-
-     */
-
     }
-
-    //streamingCombinedStream.print()
 
     streamingContext.start()
     streamingContext.awaitTermination()

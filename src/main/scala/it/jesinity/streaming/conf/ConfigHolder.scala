@@ -3,7 +3,7 @@ package it.jesinity.streaming.conf
 import com.typesafe.config.ConfigFactory
 
 /**
-  * created by CGnal s.p.a
+  * configuration holder
   */
 object ConfigHolder {
 
